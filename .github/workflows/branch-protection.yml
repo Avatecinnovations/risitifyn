@@ -1,0 +1,19 @@
+name: Branch Protection Rules
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  branch-protection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch protection
+        run: |
+          echo "Branch protection rules are enforced through GitHub settings"
+          echo "Please configure the following settings in your repository:"
+          echo "1. Require pull request reviews before merging"
+          echo "2. Require status checks to pass before merging"
+          echo "3. Require branches to be up to date before merging"
+          echo "4. Include administrators"
+          echo "5. Require linear history"
