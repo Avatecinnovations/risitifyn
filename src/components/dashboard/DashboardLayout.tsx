@@ -6,7 +6,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import TopNavbar from "./TopNavbar";
 import { Sidebar } from "./Sidebar";
 
-const DashboardLayout = () => {
+interface DashboardLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -19,38 +23,21 @@ const DashboardLayout = () => {
   }, [location.pathname, isMobile]);
 
   return (
-    <div className="flex min-h-screen bg-background">
-      {/* Sidebar */}
-      <div
-        className={`fixed inset-y-0 left-0 z-40 w-64 transform transition-transform duration-200 ease-in-out md:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <Sidebar />
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 md:pl-64">
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar currentPath={window.location.pathname} />
+      <div className="flex flex-1 flex-col overflow-hidden">
         <TopNavbar
           onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
           isSidebarOpen={sidebarOpen}
         />
-        <main className="pt-16 min-h-screen">
-          <div className="container mx-auto p-4 md:p-6">
-            <Outlet />
-          </div>
-        </main>
+        <main className="flex-1 overflow-y-auto p-4">{children}</main>
       </div>
-
-      {/* Mobile Sidebar Backdrop */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/50 md:hidden"
+          className="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
     </div>
   );
-};
-
-export default DashboardLayout;
+}
