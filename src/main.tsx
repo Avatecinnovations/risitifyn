@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Toaster } from "sonner";
 import "./index.css";
+import { AuthProvider } from "./providers/AuthProvider";
 
 // Register service worker
 if ("serviceWorker" in navigator) {
@@ -23,7 +24,9 @@ if ("serviceWorker" in navigator) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
     <Toaster position="top-right" />
   </React.StrictMode>
 );

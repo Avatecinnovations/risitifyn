@@ -1,0 +1,1 @@
+import React from "react"; export default function PaymentHistoryPage() { return ( <div className="p-8"><h1 className="text-3xl font-bold">Payment History</h1><div className="mt-4">Payment history coming soon...</div></div> ); }

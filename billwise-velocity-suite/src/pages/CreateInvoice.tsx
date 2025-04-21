@@ -1,0 +1,1 @@
+import React from "react"; export default function CreateInvoice() { return ( <div className="p-8"><h1 className="text-3xl font-bold">Create Invoice</h1><div className="mt-4">Invoice creation form coming soon...</div></div> ); }

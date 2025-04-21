@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import { Menu as MenuIcon, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import TopNavbar from "./TopNavbar";
 import { Sidebar } from "./Sidebar";
@@ -24,7 +22,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      <Sidebar currentPath={window.location.pathname} />
+      <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <TopNavbar
           onMenuToggle={() => setSidebarOpen(!sidebarOpen)}

@@ -1,0 +1,1 @@
+import React from "react"; export default function MyStore() { return ( <div className="p-8"><h1 className="text-3xl font-bold">My Store</h1><div className="mt-4">Store settings coming soon...</div></div> ); }
